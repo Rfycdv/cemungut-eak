@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Titan+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Cemungut eaaak</title>
+</head>
+
+<body>
+    <div class="container-fluid bg-custom-color flex-column d-flex justify-content-center align-items-center border px-0">
+        <div id="page1" class="container-fluid d-flex align-items-center justify-content-center flex-column vh-100">
+            <div class="container popup container-fluid d-flex container-custom position-relative bg-light rounded text-center p-5 fs-4">
+                Hey You!<br> click that button!
+            </div>
+            <div class="container-fluid d-flex pt-5 pb-5">
+                <div class="container-fluid d-flex justify-content-center w-100 align-items-end">
+                    <img src="Anya_1.png" id="img" class="rounded shake img-hook-2 img-fluid" alt="...">
+                </div>
+                <div class="container-fluid">
+                    <button id="btn1" class="btn border border-5 text-light p-3 pb-2 pt-2 fs-1" >Click Me!</button>
+                </div>
+            </div>
+        </div>
+        <div id="page2" class="container-fluid bg-custom-color vh-100 d-flex justify-content-end align-items-center px-0 d-none">
+            <div class="container-fluid d-flex flex-column w-75 w-m ">
+                <div class="container-fluid d-flex justify-content-center w-100 align-items-end">
+                    <img src="Anya_0.png" class="rounded shaking img-hook  img-fluid" alt="...">
+                </div>
+                <div class="container container-fluid custom-text-box w-auto p-4 rounded fs-6 bg-light border"></div>
+                <div class="container-fluid d-flex justify-content-center">
+                    <button id="btn2" class="btn wiggle text-light mt-5 p-3 pb-2 pt-2 fs-1">Okay</button>
+                </div>
+        </div>
+        </div>
+        <div id="page3" class="container-fluid bg-custom-color vh-100 d-flex justify-content-end align-items-center px-0 d-none">
+        <div class="container-fluid d-flex flex-column w-75 w-m ">
+            <div class="container container-fluid custom-text-box text-center p-4 rounded fs-6 bg-light border"></div>
+            <div class="container-fluid d-flex justify-content-center w-100 align-items-end">
+                <img src="Anya_2.png" id="img2" class="rounded wiggle img-hook img-fluid" alt="...">
+            </div>
+        </div>
+        </div>
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script>
+            const p1 = document.getElementById('page1');
+            const p2 = document.getElementById('page2');
+            const p3 = document.getElementById('page3');
+
+            const btn1 =document.getElementById('btn1');
+            const btn2 =document.getElementById('btn2');
+
+            const img =document.getElementById('img');
+            const img2 =document.getElementById('img2');
+
+            const text1 = "Mungkin belakangan ini duniamu lagi sibuk-sibuknya, penuh tugas yang menguras waktu dan tenaga. Aku tahu ada banyak hal yang terpaksa kamu korbankan demi menyelesaikan semuanya. Melelahkan banget, ya? Tapi kamu hebat banget sudah bertahan sejauh ini. Terima kasih ya sudah terus berjuang! Jaga kesehatanmu dan harus tetap semangat, oke?";
+            const text2 = "Cemungut  ".repeat(50) + "eak";
+            const text3 = "Not Me! but that button!"
+
+            function typeWriter(element, fullText, speed = 20, callback) {
+                if (!element) return;
+                element.innerHTML = '';
+                let i = 0;
+
+                function type() {
+                    if (i < fullText.length) {
+                        element.innerHTML += fullText.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    } else {
+                        if (callback) callback();
+                    }
+                }
+                type();
+            }
+
+            btn1.addEventListener('click', () =>{
+                p1.classList.add('d-none');
+                p2.classList.remove('d-none');
+
+                const box1 = p2.querySelector('.custom-text-box');
+                typeWriter(box1, text1, 60);              
+            });
+            btn2.addEventListener('click', () =>{
+                p2.classList.add('d-none');
+                p3.classList.remove('d-none');
+                img2.style.pointerEvents = 'none';
+                
+                const box2 = p3.querySelector('.custom-text-box');
+                typeWriter(box2, text2, 15, () => {
+                    img2.style.pointerEvents = 'auto';
+                });             
+            });
+            img.addEventListener('click', () =>{
+                const box3 = p1.querySelector('.popup');
+                img.style.pointerEvents = 'none';
+                typeWriter(box3, text3, 50, () => {
+                    img.style.pointerEvents = 'auto';
+                });              
+
+            });
+            img2.addEventListener('click', () =>{
+                img2.style.pointerEvents = 'none';
+                
+                const box3 = p3.querySelector('.custom-text-box');
+                typeWriter(box3, text2, 15, () => {
+                    img2.style.pointerEvents = 'auto';
+                });
+
+            });
+        </script>
+</body>
+</html>
